@@ -1,0 +1,9 @@
+# Sound control
+set $notification_script /home/thibault/.config/sway/scripts/audio_notification.sh
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; exec $notification_script
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; exec $notification_script 
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; exec $notification_script
+
+# Backlight // Handled by kernel option now
+# bindsym XF86MonBrightnessUp exec "brightnessctl s +5%"
+# bindsym XF86MonBrightnessDown exec "brightnessctl s 5%-"

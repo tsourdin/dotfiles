@@ -1,0 +1,16 @@
+import = ["/home/thibault/.config/alacritty/themes/themes/dark_pastel.toml"]
+# import = ["/home/thibault/.config/alacritty/themes/themes/pencil_light.toml"]
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "JetBrainsMonoNerdFont"
+
+[window]
+decorations = "full"
+startup_mode = "Maximized"
+
+[window.padding]
+x = 20
+y = 20

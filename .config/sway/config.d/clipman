@@ -1,0 +1,7 @@
+# CLipman
+# Stores pasted text to ~/.local/share/clipman.json
+exec wl-paste -t text --watch clipman store
+# Stores pasted text from primary buffer to ~/.local/share/clipman-primary.json
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
+bindsym $mod+p exec "clipman pick -t wofi"
+bindsym $mod+Shift+p exec "clipman pick -t wofi --histpath=~/.local/share/clipman-primary.json --primary"

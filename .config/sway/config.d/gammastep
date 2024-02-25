@@ -1,0 +1,5 @@
+# Command to toggle gammastep (night mode)
+set $gamma_cmd [ $(pgrep -c gammastep) -ge 1 ] && pkill gammastep || gammastep -O 2500
+
+# Toggle Gammastep
+bindsym $mod+g exec $gamma_cmd

@@ -1,0 +1,7 @@
+# Notification Daemon
+# exec swaync
+exec dunst
+
+# Toggle control center
+# bindsym $mod+Shift+n exec swaync-client -t -sw
+

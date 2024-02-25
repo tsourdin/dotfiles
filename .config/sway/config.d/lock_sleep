@@ -1,0 +1,15 @@
+## Lock configuration
+# Command to lock sway with a grey background
+set $lock swaylock -c 1d1f21
+
+# Lock the screen (memo : go to nap)
+# bindsym Control+Mod1+l exec $lock
+bindsym $mod+Shift+s exec $lock
+
+## Idle configuration
+
+exec swayidle \
+	timeout 5 'if pgrep -x swaylock; then swaymsg "output * power off"; fi' resume 'swaymsg "output * power on"' \
+	timeout 300 'swaylock -c 1d1f21' \
+	timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+	before-sleep 'swaylock -c 1d1f21' \
