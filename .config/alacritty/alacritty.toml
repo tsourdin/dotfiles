@@ -1,4 +1,5 @@
-import = ["/home/thibault/.config/alacritty/themes/themes/dark_pastel.toml"]
+import = ["/home/thibault/.config/alacritty/themes/themes/thelovelace.toml"]
+# import = ["/home/thibault/.config/alacritty/themes/themes/dark_pastel.toml"]
 # import = ["/home/thibault/.config/alacritty/themes/themes/pencil_light.toml"]
 
 [font]
