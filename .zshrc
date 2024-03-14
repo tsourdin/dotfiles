@@ -37,7 +37,7 @@ compinit
 # Some more completion
 autoload -U +X bashcompinit && bashcompinit
 # Terraform completion
-complete -o nospace -C /usr/bin/terraform terraform
+complete -o nospace -C '/usr/bin/terraform' terraform
 # AWS completion
 complete -C '/usr/local/bin/aws_completer' aws
 
@@ -107,8 +107,6 @@ alias -g B=bat
 alias -g CP=wl-copy
 alias -g vi=nvim
 alias -g vim=nvim
-alias ce='chezmoi edit'
-alias ca='chezmoi apply'
 alias ls='ls --color=auto'
 alias ll='ls -al'
 alias chromium='chromium --ozone-platform-hint=auto'
