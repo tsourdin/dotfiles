@@ -1,10 +1,5 @@
 vim.g.mapleader = ' '
 
--- Openning Netrw
-vim.keymap.set('n', '<Leader>e', vim.cmd.Ex)
-vim.keymap.set('n', '<Leader>l', vim.cmd.Le)
-vim.keymap.set('n', '<Leader>v', vim.cmd.Ve)
-
 -- Marks for azerty
 vim.keymap.set('n', '²', '`')
 
@@ -39,14 +34,15 @@ vim.keymap.set("v", "<Leader>x", "\"_x")
 vim.keymap.set("n", "<Leader>y", "\"+y")
 vim.keymap.set("v", "<Leader>y", "\"+y")
 
--- Shortcut for write
-vim.keymap.set("n", "<Leader>w", vim.cmd.write)
-vim.keymap.set("n", "<Leader>q", vim.cmd.quit)
-
 -- C shortcuts
 vim.keymap.set("n", "<Leader>cb", "o<ESC>I{<CR>}<CR><ESC>kO") -- C body
 vim.keymap.set("n", "<Leader>ca", "A()<ESC>i") -- C arguments
 vim.keymap.set("n", "<Leader>cs", "A {<CR>}<ESC>O") -- C statement
 vim.keymap.set("n", "<Leader>cm", "0Cint main(int argc, char *argv[])<ESC>o<ESC>I{<CR>}<CR><ESC>kO") -- C main
 vim.keymap.set("n", "<Leader>cdi", "0Clog_info(\"\");<ESC>==ci\"") -- C statement`
+
+-- Add / remove simple / double quotes around word / Word
+vim.keymap.set("n", "<Leader>qw", "bi\"<ESC>ea\"<ESC>")
+vim.keymap.set("n", "<Leader>qW", "Bi\"<ESC>Ea\"<ESC>")
+vim.keymap.set("n", "<Leader>uq", "F\"xf\"x")
 
