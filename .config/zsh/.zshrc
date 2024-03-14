@@ -91,7 +91,7 @@ bindkey  -M viins '\es' _toggle_sudo
 
 # Prompt
 # Append local prompts themes directory to fpath
-fpath=(~/.zprompts $fpath)
+fpath=(~/.config/zsh/.zprompts $fpath)
 # Load promptinit function and call it (search promptinit in the man)
 autoload -U promptinit
 promptinit

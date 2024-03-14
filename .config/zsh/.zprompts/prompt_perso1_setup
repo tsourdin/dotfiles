@@ -1,0 +1,102 @@
+# first personal theme
+
+# Toggle VI INSERT / NORMAL mode variable
+# zle-keymap-select function is called automatically by zsh
+# whenever the keymap is changed
+function zle-keymap-select {
+  color_vi_mode=magenta
+  if [[ $KEYMAP == "vicmd" ]]
+  then
+      PR_VI_MODE="%B%F{$color_vi_mode}NORMAL%f%b"
+  else
+      PR_VI_MODE="%B%F{$color_vi_mode}INSERT%f%b"
+  fi
+  prompt_perso1_precmd
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+prompt_perso1_setup () {
+
+  # Variables for colors used below
+  # Supported colors: red, blue, green, cyan, yellow, magenta, black, & white
+  color_venv=yellow
+  color_status_ok=green
+  color_status_nok=red
+  color_path=blue
+  color_vi_mode=magenta
+  color_git_1=yellow
+  color_git_2=cyan
+  color_arrow=green
+
+  PR_CMD_STATUS="%B%(?|%F{$color_status_ok}√|%F{$color_status_nok}✘ %?)"
+  # Variables explanations :
+  # %B : bold
+  # %(x|true_text|false_text) : ternary expression
+  ## n? : true if the exit status of the last command was n, n defaults to 0
+  ## %F : start using color
+  ## %? : return status of the command executed before
+
+  PR_PATH="%F{$color_path}%(5~|%-2~/.../%3~|%~)"
+  # %F : start using color
+  # %(||) : ternary expression
+  ## n~ : true if the current path, has at least n elements relative to the root directory
+  ## 5~ : if the path has more than more than 5 elements
+  ## %-n~ : n leading elements   %%n~ : n trailing elements
+  ## %-2~/.../%3~ : put ... between the first 2 directories and the last 3 ones
+  ## %~: the full path
+
+  PR_ARROW="%F{$color_arrow}→%f%b"
+  # %f : stop using a different colour
+  # %b : stop bold
+  # other style : → ➤ ❯
+
+  PR_VI_MODE="%B%F{$color_vi_mode}INSERT%f"
+
+  # Setup git prompt, see https://stackoverflow.com/questions/66844301/using-vcs-info-in-zsh-custom-prompt-with-promptinit
+  # prompt_opts=(percent subst) # Array used by the promptinit system, to set some options.
+  # PROMPT_PERCENT : allows specific expansion with %, needed for variables expansion
+  # PROMPT_SUBST : 
+  autoload -Uz vcs_info # Load a function from fpath
+  # -U : without aliases
+  # -z : with zsh style (?)
+  # vcs_info : function giving info from version control system, sets vcs_info_msg_0_
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:*' formats "%F{$color_git_1}%s:(%F{$color_git_2}%b%F{$color_git_1})%f"
+  # To understand zstyle : https://unix.stackexchange.com/questions/214657/what-does-zstyle-do
+  # Best way is to explore with the command and play with autocomplete
+ 
+  add-zsh-hook precmd prompt_perso1_precmd
+}
+
+prompt_perso1_precmd () {
+
+  # Get status of previous command
+  PS1="$PR_CMD_STATUS"
+
+  # Add virtualenv info if we are in one 
+  if [ -n "$VIRTUAL_ENV" ]; then
+    PR_PYTHON_VENV="%B%F{$color_venv}($(basename $VIRTUAL_ENV))"
+    PS1="$PS1 $PR_PYTHON_VENV "
+  fi
+
+  # Add PATH
+  PS1="$PS1 $PR_PATH"
+
+  # Get GIT info
+  vcs_info
+  PR_GIT="${vcs_info_msg_0_}"
+  # Update PS1 only if necessary
+  if (( ${#vcs_info_msg_0_} != 0 ))
+  then
+    PS1="$PS1  $PR_GIT"
+  fi
+
+  # Add final arrow
+  PS1="$PS1  $PR_ARROW  "
+
+  # Show vi-mode at right
+  RPS1="$PR_VI_MODE"
+}
+
+prompt_perso1_setup "$@"
