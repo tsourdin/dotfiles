@@ -3,7 +3,7 @@
 # Default wallpaper
 # Note: archlinux-wallpaper gives a few nice wallpapers
 # output * bg /usr/share/backgrounds/archlinux/wave.png fill
-exec .config/sway/scripts/azotebg
+exec .config/sway/scripts/background.sh
 
 # output * scale 1.3
 
