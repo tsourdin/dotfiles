@@ -189,20 +189,21 @@ export VISUAL=nvim
 # Coloured manpages with bat : https://github.com/sharkdp/bat#man
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
-# Add go binaries path to PATH
+# Add go binaries and nvim path to PATH
 export GOPATH="$HOME/.go"
-export PATH="$GOPATH/bin:$PATH"
+export NVIMPATH="/opt/nvim-linux64/bin"
+export PATH="$PATH:$GOPATH/bin:$NVIMPATH"
 
 # Use autosuggestions. See https://github.com/zsh-users/zsh-autosuggestions
 # (Installed with package extra/zsh-autosuggestions)
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_STRATEGY=(completion)
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
 # Use syntax coloration plugin. See https://github.com/zsh-users/zsh-syntax-highlighting
 # (Installed with package community/zsh-syntax-highlighting)
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # color brackets
-ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
+# ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 # customize colors
 typeset -A ZSH_HIGHLIGHT_STYLES
 # command and aliases colored in cyan instead of green
