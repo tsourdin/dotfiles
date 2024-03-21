@@ -29,11 +29,6 @@ setopt interactivecomments
 # Initialize completion system
 zstyle :compinstall filename '/home/thibault/.zshrc'
 
-# eksctl completion (Amazon eks CLI)
-fpath=($fpath ~/.zsh/completion)
-autoload -Uz compinit
-compinit
-
 # Some more completion
 autoload -U +X bashcompinit && bashcompinit
 # Terraform completion
