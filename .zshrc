@@ -32,57 +32,58 @@ zstyle :compinstall filename '/home/thibault/.zshrc'
 # Some more completion
 autoload -U +X bashcompinit && bashcompinit
 # Terraform completion
-complete -o nospace -C '/usr/bin/terraform' terraform
+# complete -o nospace -C '/usr/bin/terraform' terraform
 # AWS completion
-complete -C '/usr/local/bin/aws_completer' aws
+# complete -C '/usr/local/bin/aws_completer' aws
 
-# Keybindings
-# First, some reading about keybindings :
-# https://unix.stackexchange.com/questions/560461/how-to-get-codes-for-zsh-bindkey
-# https://unix.stackexchange.com/a/444270/5132
-# https://unix.stackexchange.com/a/499139/5132
-# https://unix.stackexchange.com/questions/238406
-bindkey -v # vi mode
-# rebind DEL to delete-char (https://superuser.com/questions/983016/zsh-delete-keybinding)
-bindkey -M viins '\e[3~' delete-char 
-# vi mode deactivates Ctrl+R search, we reactivate it in insert mode
-bindkey -M viins '^R' history-incremental-search-backward 
-bindkey -M viins '^S' history-incremental-search-forward
-# deactivate terminal flow control to be able to use Ctrl + S
-stty -ixon
-# same for emacs-style move to beggining / end
-bindkey -M viins '^A' beginning-of-line
-bindkey -M viins '^E' end-of-line
-# default old-vi-mode doesn't allow backspace after A from vicmd mode
-bindkey -M viins '^?' backward-delete-char
-# to get last argument with <ESC>+. in command mode
-function _vi-yank-arg {
-  NUMERIC=1 zle .vi-add-next
-  zle .insert-last-word
-}
-zle -N _vi-yank-arg
-bindkey -M vicmd . _vi-yank-arg
-# no delay for cmd mode (1 100th of seconds)
-KEYTIMEOUT=1
-# disable ESC in cmd mode, by default ESC makes ZLE wait for another keystroke
-bindkey -M vicmd '^[' undefined-key
-# disable Ctrl+X widgets in insert mode, not usefull ?
-# bindkey -rM viins '^X'
-# toggle sudo at the beginning in viins mode with Alt+s
-function _toggle_sudo {
-	if [[ "$BUFFER" =~ "^su.*" ]]
-	then
-		zle beginning-of-line
-		zle delete-word
-		zle delete-char
-	else
-		zle beginning-of-line
-		BUFFER="sudo $BUFFER"
-	fi
-	zle end-of-line
-}
-zle -N _toggle_sudo
-bindkey  -M viins '\es' _toggle_sudo
+### Keybindings : Usefull if I want to go back to vi keybindings. For now emacs is ok
+# # First, some reading about keybindings :
+# # https://unix.stackexchange.com/questions/560461/how-to-get-codes-for-zsh-bindkey
+# # https://unix.stackexchange.com/a/444270/5132
+# # https://unix.stackexchange.com/a/499139/5132
+# # https://unix.stackexchange.com/questions/238406
+# bindkey -v # vi mode
+# # rebind DEL to delete-char (https://superuser.com/questions/983016/zsh-delete-keybinding)
+# bindkey -M viins '\e[3~' delete-char 
+# # vi mode deactivates Ctrl+R search, we reactivate it in insert mode
+# bindkey -M viins '^R' history-incremental-search-backward 
+# bindkey -M viins '^S' history-incremental-search-forward
+# # deactivate terminal flow control to be able to use Ctrl + S
+# stty -ixon
+# # same for emacs-style move to beggining / end
+# bindkey -M viins '^A' beginning-of-line
+# bindkey -M viins '^E' end-of-line
+# # default old-vi-mode doesn't allow backspace after A from vicmd mode
+# bindkey -M viins '^?' backward-delete-char
+# # to get last argument with <ESC>+. in command mode
+# function _vi-yank-arg {
+#   NUMERIC=1 zle .vi-add-next
+#   zle .insert-last-word
+# }
+# zle -N _vi-yank-arg
+# bindkey -M vicmd . _vi-yank-arg
+# # no delay for cmd mode (1 100th of seconds)
+# KEYTIMEOUT=1
+# # disable ESC in cmd mode, by default ESC makes ZLE wait for another keystroke
+# bindkey -M vicmd '^[' undefined-key
+# # disable Ctrl+X widgets in insert mode, not usefull ?
+# # bindkey -rM viins '^X'
+# # toggle sudo at the beginning in viins mode with Alt+s
+# function _toggle_sudo {
+# 	if [[ "$BUFFER" =~ "^su.*" ]]
+# 	then
+# 		zle beginning-of-line
+# 		zle delete-word
+# 		zle delete-char
+# 	else
+# 		zle beginning-of-line
+# 		BUFFER="sudo $BUFFER"
+# 	fi
+# 	zle end-of-line
+# }
+# zle -N _toggle_sudo
+# bindkey  -M viins '\es' _toggle_sudo
+bindkey -e
 
 # Prompt
 # Append local prompts themes directory to fpath
