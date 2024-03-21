@@ -175,14 +175,6 @@ mkcd() {
     fi
 }
 
-# From https://github.com/gokcehan/lf/wiki/Tutorial
-# allows to cd with lf
-LFCD=".config/lf/lfcd.sh"
-if [ -f "$LFCD" ]; then
-    source "$LFCD"
-fi
-bindkey -M viins -s '^o' 'lfcd\n'
-
 # Environment variables
 export EDITOR=nvim
 export VISUAL=nvim
