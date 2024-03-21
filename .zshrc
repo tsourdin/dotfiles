@@ -188,14 +188,14 @@ export PATH="$PATH:$GOPATH/bin:$NVIMPATH"
 
 # Use autosuggestions. See https://github.com/zsh-users/zsh-autosuggestions
 # (Installed with package extra/zsh-autosuggestions)
-# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# ZSH_AUTOSUGGEST_STRATEGY=(completion)
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
 # Use syntax coloration plugin. See https://github.com/zsh-users/zsh-syntax-highlighting
 # (Installed with package community/zsh-syntax-highlighting)
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # color brackets
-# ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 # customize colors
 typeset -A ZSH_HIGHLIGHT_STYLES
 # command and aliases colored in cyan instead of green
