@@ -1,20 +1,20 @@
 # first personal theme
 
-# Toggle VI INSERT / NORMAL mode variable
-# zle-keymap-select function is called automatically by zsh
-# whenever the keymap is changed
-function zle-keymap-select {
-  color_vi_mode=magenta
-  if [[ $KEYMAP == "vicmd" ]]
-  then
-      PR_VI_MODE="%B%F{$color_vi_mode}NORMAL%f%b"
-  else
-      PR_VI_MODE="%B%F{$color_vi_mode}INSERT%f%b"
-  fi
-  prompt_perso1_precmd
-  zle reset-prompt
-}
-zle -N zle-keymap-select
+# # Toggle VI INSERT / NORMAL mode variable
+# # zle-keymap-select function is called automatically by zsh
+# # whenever the keymap is changed
+# function zle-keymap-select {
+#   color_vi_mode=magenta
+#   if [[ $KEYMAP == "vicmd" ]]
+#   then
+#       PR_VI_MODE="%B%F{$color_vi_mode}NORMAL%f%b"
+#   else
+#       PR_VI_MODE="%B%F{$color_vi_mode}INSERT%f%b"
+#   fi
+#   prompt_perso1_precmd
+#   zle reset-prompt
+# }
+# zle -N zle-keymap-select
 
 prompt_perso1_setup () {
 
@@ -96,7 +96,7 @@ prompt_perso1_precmd () {
   PS1="$PS1  $PR_ARROW  "
 
   # Show vi-mode at right
-  RPS1="$PR_VI_MODE"
+  # RPS1="$PR_VI_MODE"
 }
 
 prompt_perso1_setup "$@"
