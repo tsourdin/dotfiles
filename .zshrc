@@ -101,8 +101,7 @@ export TERM=xterm-256color
 alias -g L=less
 alias -g B=bat
 alias -g CP=wl-copy
-alias -g vi=nvim
-alias -g vim=nvim
+alias vi=nvim
 alias ls='ls --color=auto'
 alias ll='ls -al'
 alias chromium='chromium --ozone-platform-hint=auto'
@@ -189,15 +188,15 @@ ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
 # Use syntax coloration plugin. See https://github.com/zsh-users/zsh-syntax-highlighting
 # (Installed with package community/zsh-syntax-highlighting)
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # color brackets
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 # customize colors
 typeset -A ZSH_HIGHLIGHT_STYLES
-# command and aliases colored in cyan instead of green
+# available colors : command and aliases colored in cyan instead of green
 ZSH_HIGHLIGHT_STYLES[command]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[global-alias]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[arg0]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[comment]='fg=white'
-ZSH_HIGHLIGHT_STYLES[precommand]='fg=red,underline'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=underline'
