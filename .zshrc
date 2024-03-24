@@ -84,6 +84,8 @@ autoload -U +X bashcompinit && bashcompinit
 # zle -N _toggle_sudo
 # bindkey  -M viins '\es' _toggle_sudo
 bindkey -e
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 # Prompt
 # Append local prompts themes directory to fpath
