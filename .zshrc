@@ -176,8 +176,8 @@ mkcd() {
 export EDITOR=nvim
 export VISUAL=nvim
 # Coloured manpages with bat : https://github.com/sharkdp/bat#man
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export MANROFFOPT="-c"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# export MANROFFOPT="-c"
 # Add go binaries and nvim path to PATH
 export GOPATH="$HOME/.go"
 export NVIMPATH="/opt/nvim-linux64/bin"
