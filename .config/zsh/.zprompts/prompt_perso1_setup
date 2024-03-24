@@ -89,11 +89,11 @@ prompt_perso1_precmd () {
   # Update PS1 only if necessary
   if (( ${#vcs_info_msg_0_} != 0 ))
   then
-    PS1="$PS1  $PR_GIT"
+    PS1="$PS1 $PR_GIT"
   fi
 
   # Add final arrow
-  PS1="$PS1  $PR_ARROW  "
+  PS1="$PS1 $PR_ARROW "
 
   # Show vi-mode at right
   # RPS1="$PR_VI_MODE"
