@@ -114,6 +114,8 @@ alias dpa='docker ps --all'
 alias di='docker images'
 alias vstop='virsh shutdown'
 alias vstart='virsh start'
+alias vu='vagrant up'
+alias vd='vagrant destroy'
 # Kubernetes
 # Verbs:
 # g=get c=create d=delete dc=describe a=apply e=edit
