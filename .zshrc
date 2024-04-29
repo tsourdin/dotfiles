@@ -179,9 +179,10 @@ export VISUAL=nvim
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # export MANROFFOPT="-c"
 # Add go binaries and nvim path to PATH
-export GOPATH="$HOME/.go"
+export GOPATH="$HOME/.go/bin"
 export NVIMPATH="/opt/nvim-linux64/bin"
-export PATH="$PATH:$GOPATH/bin:$NVIMPATH"
+export LOCALPATH="$HOME/.go/bin"
+export PATH="$PATH:$GOPATH:$NVIMPATH:$LOCALPATH"
 
 # Use autosuggestions. See https://github.com/zsh-users/zsh-autosuggestions
 # (Installed with package extra/zsh-autosuggestions)
