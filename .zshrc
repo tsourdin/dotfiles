@@ -86,6 +86,7 @@ complete -C '/usr/local/bin/aws_completer' aws
 bindkey -e
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey -s ^f "tmux-sessionizer\n"
 
 # Prompt
 # Append local prompts themes directory to fpath
@@ -181,7 +182,7 @@ export VISUAL=nvim
 # Add go binaries and nvim path to PATH
 export GOPATH="$HOME/.go/bin"
 export NVIMPATH="/opt/nvim-linux64/bin"
-export LOCALPATH="$HOME/.go/bin"
+export LOCALPATH="$HOME/.local/bin"
 export PATH="$PATH:$GOPATH:$NVIMPATH:$LOCALPATH"
 
 # Use autosuggestions. See https://github.com/zsh-users/zsh-autosuggestions
