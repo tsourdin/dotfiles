@@ -32,9 +32,11 @@ zstyle :compinstall filename '/home/thibault/.zshrc'
 # Some more completion
 autoload -U +X bashcompinit && bashcompinit
 # Terraform completion
-# complete -o nospace -C '/usr/bin/terraform' terraform
+complete -o nospace -C '/usr/bin/terraform' terraform
 # AWS completion
 complete -C '/usr/local/bin/aws_completer' aws
+# Kubectl completion
+source <(kubectl completion zsh)
 
 ### Keybindings : Usefull if I want to go back to vi keybindings. For now emacs is ok
 # # First, some reading about keybindings :
