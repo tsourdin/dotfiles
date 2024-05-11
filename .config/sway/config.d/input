@@ -4,7 +4,7 @@ input type:keyboard {
     xkb_layout "us, fr"
     xkb_model "pc105"
     xkb_numlock enabled
-    xkb_options grp:rctrl_toggle
+    xkb_options grp:win_space_toggle
 }
 
 input type:touchpad {
