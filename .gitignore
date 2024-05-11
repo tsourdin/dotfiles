@@ -1,1 +1,5 @@
 .config/zsh/.zcompdump
+.config/alacritty/themes/
+.config/alacritty/package.json
+.config/alacritty/package-lock.json
+
