@@ -6,16 +6,19 @@
 # sleep 0.05
 
 # Get the volume and check if muted or not (STATE):
-VOL=`wpctl get-volume @DEFAULT_SINK@ | awk '{print $2}'`
-VOL=${VOL#0.}
+VOL=$(wpctl get-volume @DEFAULT_SINK@ | awk '{print $2}')
+MUTED=$(wpctl get-volume @DEFAULT_SINK@ | awk '{print $3}')
+VOL=$(echo "${VOL}*100" | bc)
+VOL=${VOL%.00}
 
 # Have a different symbol for varying volume levels:
-if [ $VOL == '00' ]; then
-    VOL="0"
+if [ -n "$MUTED" ]; then
+    ICON=~/.config/sway/icons/vol-mute.png
+elif [ $VOL -eq "00" ]; then
     ICON=~/.config/sway/icons/vol-mute.png
 elif [ $VOL -lt "30" ]; then
     ICON=~/.config/sway/icons/vol-low.png
-elif [ $VOL -lt "90" ]; then
+elif [ $VOL -lt "80" ]; then
     ICON=~/.config/sway/icons/vol-med.png
 else
     ICON=~/.config/sway/icons/vol-high.png
