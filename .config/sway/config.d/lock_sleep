@@ -3,8 +3,8 @@
 set $lock swaylock -c 1d1f21
 
 # Lock the screen (memo : go to nap)
-# bindsym Control+Mod1+l exec $lock
-bindsym $mod+Shift+s exec $lock
+bindsym Control+Mod1+l exec $lock
+# bindsym $mod+Shift+s exec $lock
 
 ## Idle configuration
 
