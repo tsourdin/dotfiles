@@ -1,6 +1,5 @@
-import = ["/home/thibault/.config/alacritty/themes/themes/thelovelace.toml"]
-# import = ["/home/thibault/.config/alacritty/themes/themes/dark_pastel.toml"]
-# import = ["/home/thibault/.config/alacritty/themes/themes/pencil_light.toml"]
+# import = ["/home/thibault/.config/alacritty/themes/afterglow.toml"]
+import = ["/home/thibault/.config/alacritty/themes/ayu_light.toml"]
 
 [font]
 size = 12.0
@@ -13,5 +12,5 @@ decorations = "full"
 startup_mode = "Maximized"
 
 [window.padding]
-x = 20
-y = 20
+x = 10
+y = 10
