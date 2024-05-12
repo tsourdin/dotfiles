@@ -196,8 +196,8 @@ client.focused #4c7899 #285577 #ffffff #2e9ef4 #4a6382
 # exec_always import-gsettings
 
 # Code to switch theme when pressing Mod+T
-set $toogle_theme source /home/thibault/.config/sway/scripts/toogle_dark_light.sh
-bindsym $mod+t exec $toogle_theme
+set $toggle_theme /home/thibault/.config/sway/scripts/toggle_dark_light.sh
+bindsym $mod+t exec $toggle_theme
 
 bindsym $mod+Shift+f exec thunar
 
