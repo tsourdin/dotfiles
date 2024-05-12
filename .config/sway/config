@@ -143,6 +143,12 @@ font JetBrainsMonoNerdFont 9
     'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.'\
     -B 'Yes, exit sway' 'swaymsg exit'
 
+    # Reboot / Shutdown
+    bindsym Control+Mod1+Delete exec swaynag -t warning -m \
+    'Do you want to shutdown or reboot'\
+    -B 'Shutdown' 'shutdown now' \
+    -B 'Reboot' 'reboot'
+
 # Scratchpad:
 
     # Sway has a "scratchpad", which is a bag of holding for windows.
