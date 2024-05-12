@@ -209,3 +209,5 @@ bindsym Shift+Alt+Print exec grim -g "$(slurp)" - | wl-copy
 # capture the focused monitor to clipboard    
 bindsym Shift+Control+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
 
+# select french keyboard
+exec swaymsg input "1:1:AT_Translated_Set_2_keyboard" xkb_switch_layout 1
