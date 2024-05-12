@@ -86,8 +86,10 @@ source <(kubectl completion zsh)
 # zle -N _toggle_sudo
 # bindkey  -M viins '\es' _toggle_sudo
 bindkey -e
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word # Ctrl+right_arrow
+bindkey "^[[1;5D" backward-word # Ctrl+left_arrow
+bindkey "^H" backward-delete-word # Ctrl+backspace
+bindkey "^[[3;5~" delete-word # Ctrl+suppr
 bindkey -s ^f "tmux-sessionizer\n"
 
 # Prompt
