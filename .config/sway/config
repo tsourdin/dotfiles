@@ -209,7 +209,3 @@ bindsym Shift+Alt+Print exec grim -g "$(slurp)" - | wl-copy
 # capture the focused monitor to clipboard    
 bindsym Shift+Control+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
 
-# launch ubuntu vm and virt manager window
-# set $start_vm "virsh start ubuntu22.04\n virt-manager --connect qemu:///session --show-domain-console ubuntu22.04"
-set $start_vm "virsh start ubuntu22.04\n virt-viewer -f -w -a ubuntu22.04 --hotkeys=release-cursor=ctrl+alt"
-bindsym $mod+Shift+v exec $start_vm
