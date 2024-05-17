@@ -116,6 +116,9 @@ alias dpa='docker ps --all'
 alias di='docker images'
 alias vstop='virsh shutdown'
 alias vstart='virsh start'
+alias git='LANG=en_GB git'
+
+
 # Kubernetes
 # Verbs:
 # g=get c=create d=delete dc=describe a=apply e=edit
