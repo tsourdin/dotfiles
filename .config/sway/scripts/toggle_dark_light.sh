@@ -1,28 +1,28 @@
 #!/bin/sh
 
-alacritty_config_file=/home/thibault/dotfiles/.config/alacritty/alacritty.toml
-alacritty_dark_theme=catppucin-frappe
-alacritty_light_theme=catppuccin-latte
+ALACRITTY_CONFIG_FILE=/home/thibault/dotfiles/.config/alacritty/alacritty.toml
+ALACRITTY_DARK_THEME=catppuccin_frappe
+ALACRITTY_LIGHT_THEME=catppuccin_latte
 
-tmux_config_file=/home/thibault/dotfiles/.tmux.conf
-tmux_dark_theme=frappe
-tmux_light_theme=latte
+TMUX_CONFIG_FILE=/home/thibault/dotfiles/.tmux.conf
+TMUX_DARK_THEME=frappe
+TMUX_LIGHT_THEME=latte
 
-gtk_theme=$(gsettings get org.gnome.desktop.interface gtk-theme)
+GTK_THEME=$(gsettings get org.gnome.desktop.interface gtk-theme)
 
-if [ "$gtk_theme" = "'Yaru-dark'" ]
+if [ "$GTK_THEME" = "'Yaru-dark'" ]
 then
     gsettings set org.gnome.desktop.interface gtk-theme 'Yaru'
     gsettings set org.gnome.desktop.interface color-scheme 'default'
     gsettings set org.gnome.desktop.interface icon-theme 'Yaru'
-    sed -i "s/$alacritty_dark_theme/$alacritty_light_theme/" "$alacritty_config_file"
-    sed -i "s/$tmux_dark_theme/$tmux_light_theme/" "$tmux_config_file"
-elif [ "$gtk_theme" = "'Yaru'" ] # if light theme : we switch to dark
+    sed -i "s/$ALACRITTY_DARK_THEME/$ALACRITTY_LIGHT_THEME/" "$ALACRITTY_CONFIG_FILE"
+    sed -i "s/$TMUX_DARK_THEME/$TMUX_LIGHT_THEME/" "$TMUX_CONFIG_FILE"
+elif [ "$GTK_THEME" = "'Yaru'" ] # if light theme : we switch to dark
 then
     gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-dark'
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
     gsettings set org.gnome.desktop.interface icon-theme 'Yaru-dark'
-    sed -i "s/$alacritty_light_theme/$alacritty_dark_theme/" "$alacritty_config_file"
-    sed -i "s/$tmux_light_theme/$tmux_dark_theme/" "$tmux_config_file"
+    sed -i "s/$ALACRITTY_LIGHT_THEME/$ALACRITTY_DARK_THEME/" "$ALACRITTY_CONFIG_FILE"
+    sed -i "s/$TMUX_LIGHT_THEME/$TMUX_DARK_THEME/" "$TMUX_CONFIG_FILE"
 fi
-tmux source-file "$tmux_config_file"
+tmux source-file "$TMUX_CONFIG_FILE"
