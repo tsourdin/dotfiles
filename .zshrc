@@ -108,7 +108,7 @@ export TERM=xterm-256color
 alias -g L=less
 alias -g B=bat
 alias -g CP=wl-copy
-alias vi=nvim
+alias vi='nvim --listen $HOME/.cache/nvim/server.pipe' # listen for RPC calls
 alias ls='ls --color=auto'
 alias ll='ls -al'
 alias chromium='chromium --ozone-platform-hint=auto'
