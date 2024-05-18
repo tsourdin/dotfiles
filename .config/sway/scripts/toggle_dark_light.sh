@@ -23,7 +23,7 @@ then
     sed -i "s/$ALACRITTY_DARK_THEME/$ALACRITTY_LIGHT_THEME/" "$ALACRITTY_CONFIG_FILE"
     sed -i "s/$TMUX_DARK_THEME/$TMUX_LIGHT_THEME/" "$TMUX_CONFIG_FILE"
     sed -i "s/$NVIM_DARK_THEME/$NVIM_LIGHT_THEME/" "$NVIM_CONFIG_FILE"
-    nvim --remote-send ":colorscheme $NVIM_LIGHT_THEME<CR>" --server "$NVIM_SERVER_PIPE"
+    /opt/nvim-linux64/bin/nvim --remote-send ":colorscheme $NVIM_LIGHT_THEME<CR>" --server "$NVIM_SERVER_PIPE"
 elif [ "$CURRENT_MODE" = "'default'" ] # if light theme : we switch to dark
 then
     gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-dark'
@@ -32,6 +32,7 @@ then
     sed -i "s/$ALACRITTY_LIGHT_THEME/$ALACRITTY_DARK_THEME/" "$ALACRITTY_CONFIG_FILE"
     sed -i "s/$TMUX_LIGHT_THEME/$TMUX_DARK_THEME/" "$TMUX_CONFIG_FILE"
     sed -i "s/$NVIM_LIGHT_THEME/$NVIM_DARK_THEME/" "$NVIM_CONFIG_FILE"
-    nvim --remote-send ":colorscheme $NVIM_DARK_THEME<CR>" --server "$NVIM_SERVER_PIPE"
+    /opt/nvim-linux64/bin/nvim --remote-send ":colorscheme $NVIM_DARK_THEME<CR>" --server "$NVIM_SERVER_PIPE"
 fi
 tmux source-file "$TMUX_CONFIG_FILE"
+ls "$HOME/.cache/nvim/"
