@@ -217,3 +217,7 @@ bindsym Shift+Control+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] |
 
 # select french keyboard
 exec swaymsg input "1:1:AT_Translated_Set_2_keyboard" xkb_switch_layout 1
+
+# fix xdg-desktop-portal 
+# see: https://github.com/emersion/xdg-desktop-portal-wlr/wiki/%22It-doesn't-work%22-Troubleshooting-Checklist
+exec /home/thibault/.config/sway/scripts/fix-xdg-desktop-portal.sh
