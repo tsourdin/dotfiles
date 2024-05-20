@@ -91,6 +91,7 @@ bindkey "^[[1;5D" backward-word # Ctrl+left_arrow
 bindkey "^H" backward-delete-word # Ctrl+backspace
 bindkey "^[[3;5~" delete-word # Ctrl+suppr
 bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^o "lfcd\n"
 
 # Prompt
 # Append local prompts themes directory to fpath
@@ -114,16 +115,11 @@ alias ll='ls -al'
 alias chromium='chromium --ozone-platform-hint=auto'
 alias dpa='docker ps --all'
 alias di='docker images'
-alias vstop='virsh shutdown'
-alias vstart='virsh start'
 alias git='LANG=en_GB git'
+alias rg='rg --hidden'
 
 
 # Kubernetes
-# Verbs:
-# g=get c=create d=delete dc=describe a=apply e=edit
-# Nouns :
-# p=pod d=deploy s=service c=configmap sc=secret st=statefulset
 alias k='kubectl'
 
 alias kg='kubectl get'
@@ -134,20 +130,6 @@ alias kgs='kubectl get services -o wide'
 alias kgc='kubectl get configmaps'
 alias kgsc='kubectl get secrets'
 
-alias kc='kubectl create'
-alias kcp='kubectl create pod'
-alias kcd='kubectl create deployment'
-alias kcs='kubectl create service'
-alias kcc='kubectl create configmap'
-alias kcsc='kubectl create secret'
-
-alias kde='kubectl delete'
-alias kdep='kubectl delete pods'
-alias kded='kubectl delete deployments.app'
-alias kdes='kubectl delete services'
-alias kdec='kubectl delete configmaps'
-alias kdesc='kubectl delete secrets'
-
 alias kdc='kubectl describe'
 alias kdcp='kubectl describe pods'
 alias kdcd='kubectl describe deployments.apps'
@@ -155,14 +137,7 @@ alias kdcs='kubectl describe services'
 alias kdcc='kubectl describe configmaps'
 alias kdcsc='kubectl describe secrets'
 
-alias kedp='kubectl edit pods'
-alias kedd='kubectl edit deployments.apps'
-alias keds='kubectl edit services'
-alias kedc='kubectl edit configmaps'
-alias kedsc='kubectl edit secrets'
-
 alias ka='kubectl apply -f'
-alias kr='kubectl replace -f'
 alias kga='kubectl get all'
 alias kex='kubectl exec -it'
 
@@ -179,6 +154,11 @@ mkcd() {
     fi
     fi
 }
+# From here : https://github.com/gokcehan/lf/blob/master/etc/lfcd.sh
+lfcd () {
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    cd "$(command lf -print-last-dir "$@")"
+}
 
 # Environment variables
 export EDITOR=nvim
@@ -189,7 +169,7 @@ export VISUAL=nvim
 # Add go binaries and nvim path to PATH
 export GOPATH="$HOME/.go/bin"
 export NVIMPATH="/opt/nvim-linux64/bin"
-export LOCALPATH="$HOME/.local/bin"
+export LOCALPATH="$HOME/.local/bin:$HOME/.local/scripts"
 export PATH="$PATH:$GOPATH:$NVIMPATH:$LOCALPATH"
 
 # Use autosuggestions. See https://github.com/zsh-users/zsh-autosuggestions
