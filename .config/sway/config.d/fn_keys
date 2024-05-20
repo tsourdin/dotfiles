@@ -7,5 +7,6 @@ bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; exe
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; exec $audio_notification_script
 
 # Backlight // Handled by kernel option now
-bindsym XF86MonBrightnessUp exec "brightnessctl s +5%"; exec $brightness_notification_script
-bindsym XF86MonBrightnessDown exec "brightnessctl s 5%-"; exec $brightness_notification_script
+set $brightnessctl_script /home/thibault/.config/sway/scripts/brightness_control.sh
+bindsym XF86MonBrightnessUp exec $brightnessctl_script -u && $brightness_notification_script
+bindsym XF86MonBrightnessDown exec $brightnessctl_script -d && $brightness_notification_script
