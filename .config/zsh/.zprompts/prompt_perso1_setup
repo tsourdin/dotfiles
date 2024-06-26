@@ -77,7 +77,7 @@ prompt_perso1_precmd () {
   # Add virtualenv info if we are in one 
   if [ -n "$VIRTUAL_ENV" ]; then
     PR_PYTHON_VENV="%B%F{$color_venv}($(basename $VIRTUAL_ENV))"
-    PS1="$PS1 $PR_PYTHON_VENV "
+    PS1="$PS1 $PR_PYTHON_VENV"
   fi
 
   # Add PATH
