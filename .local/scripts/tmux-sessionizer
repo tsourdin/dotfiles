@@ -13,7 +13,8 @@ then
     tmux new-session -ds $selected_name -c $selected
 fi
 
-tmux send-keys -t $selected_name "if [ -d .venv ]; then source .venv/bin/activate; fi" C-m C-l
+# Use sv function to load venv if it exists
+tmux send-keys -t $selected_name "sv" C-m C-l
 
 if [ -z $TMUX ]
 then
