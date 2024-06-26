@@ -37,6 +37,10 @@ complete -o nospace -C '/usr/bin/terraform' terraform
 complete -C '/usr/local/bin/aws_completer' aws
 # Kubectl completion
 source <(kubectl completion zsh)
+# Helm completion
+source <(helm completion zsh)
+# Direnv plugin see : https://direnv.net/docs/hook.html
+eval "$(direnv hook zsh)"
 
 ### Keybindings : Usefull if I want to go back to vi keybindings. For now emacs is ok
 # # First, some reading about keybindings :
@@ -117,6 +121,7 @@ alias dpa='docker ps --all'
 alias di='docker images'
 alias git='LANG=en_GB git'
 alias rg='rg --hidden'
+alias bat='batcat'
 
 
 # Kubernetes
@@ -124,20 +129,11 @@ alias k='kubectl'
 
 alias kg='kubectl get'
 alias kgp='kubectl get pods -o wide'
-alias kgpa='kubectl get pods -o wide --all-namespaces'
 alias kgd='kubectl get deployments.apps -o wide'
 alias kgs='kubectl get services -o wide'
-alias kgc='kubectl get configmaps'
-alias kgsc='kubectl get secrets'
-
-alias kdc='kubectl describe'
-alias kdcp='kubectl describe pods'
-alias kdcd='kubectl describe deployments.apps'
-alias kdcs='kubectl describe services'
-alias kdcc='kubectl describe configmaps'
-alias kdcsc='kubectl describe secrets'
 
 alias ka='kubectl apply -f'
+alias kd='kubectl delete -f'
 alias kga='kubectl get all'
 alias kex='kubectl exec -it'
 
@@ -167,10 +163,22 @@ export VISUAL=nvim
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # export MANROFFOPT="-c"
 # Add go binaries and nvim path to PATH
-export GOPATH="$HOME/.go/bin"
+export GOPATH_ROOT="/usr/local/go/bin"
+export GOPATH="$HOME/.local/go/bin:$HOME/.local/go/bin/bin"
 export NVIMPATH="/opt/nvim-linux64/bin"
 export LOCALPATH="$HOME/.local/bin:$HOME/.local/scripts"
 export PATH="$PATH:$GOPATH:$NVIMPATH:$LOCALPATH"
+
+function sv() {
+    if [ -d "$(pwd)/.venv" ]; then
+        source .venv/bin/activate
+        tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
+    fi
+}
+# Automatically source python venv if variable exists
+if [ -n "$VIRTUAL_ENV" ]; then
+    source $VIRTUAL_ENV/bin/activate;
+fi
 
 # Use autosuggestions. See https://github.com/zsh-users/zsh-autosuggestions
 # (Installed with package extra/zsh-autosuggestions)
