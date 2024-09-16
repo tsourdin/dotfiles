@@ -97,15 +97,6 @@ bindkey "^[[3;5~" delete-word # Ctrl+suppr
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s ^o "lfcd\n"
 
-# Prompt
-# Append local prompts themes directory to fpath
-fpath=(~/.config/zsh/.zprompts $fpath)
-# Load promptinit function and call it (search promptinit in the man)
-autoload -U promptinit
-promptinit
-# Set theme
-prompt perso1
-
 # To make colors work when sshed
 export TERM=xterm-256color
 
@@ -137,6 +128,26 @@ alias kd='kubectl delete -f'
 alias kga='kubectl get all'
 alias kex='kubectl exec -it'
 
+# AWS ECR
+alias docker-login-leg='aws ecr get-login-password --profile legacy | docker login --username AWS --password-stdin 801594469785.dkr.ecr.eu-west-1.amazonaws.com'
+alias docker-login-dev='aws ecr get-login-password --profile dev | docker login --username AWS --password-stdin 351370433122.dkr.ecr.eu-west-1.amazonaws.com'
+alias docker-login-prod='aws ecr get-login-password --profile prod | docker login --username AWS --password-stdin 324727559945.dkr.ecr.eu-west-1.amazonaws.com'
+
+# Environment variables
+export EDITOR=nvim
+export VISUAL=nvim
+# Coloured manpages with bat : https://github.com/sharkdp/bat#man
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# export MANROFFOPT="-c"
+# Add go binaries and nvim path to PATH
+export GOPATH_ROOT="/usr/local/go/bin"
+export GOPATH="$HOME/.local/go/bin:$HOME/.local/go/bin/bin"
+export NVIMPATH="/opt/nvim-linux64/bin"
+export LOCALPATH="$HOME/.local/bin:$HOME/.local/scripts"
+export PATH="$PATH:$GOPATH:$NVIMPATH:$LOCALPATH"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # User defined functions
 mkcd() {
     if [[ -z "$1" ]] ; then
@@ -156,19 +167,6 @@ lfcd () {
     cd "$(command lf -print-last-dir "$@")"
 }
 
-# Environment variables
-export EDITOR=nvim
-export VISUAL=nvim
-# Coloured manpages with bat : https://github.com/sharkdp/bat#man
-# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-# export MANROFFOPT="-c"
-# Add go binaries and nvim path to PATH
-export GOPATH_ROOT="/usr/local/go/bin"
-export GOPATH="$HOME/.local/go/bin:$HOME/.local/go/bin/bin"
-export NVIMPATH="/opt/nvim-linux64/bin"
-export LOCALPATH="$HOME/.local/bin:$HOME/.local/scripts"
-export PATH="$PATH:$GOPATH:$NVIMPATH:$LOCALPATH"
-
 function sv() {
     if [ -d "$(pwd)/.venv" ]; then
         source .venv/bin/activate
@@ -179,6 +177,12 @@ function sv() {
 if [ -n "$VIRTUAL_ENV" ]; then
     source $VIRTUAL_ENV/bin/activate;
 fi
+
+function track() {
+    time $@
+    notify-send "Command finished" "$*"
+    paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+}
 
 # Use autosuggestions. See https://github.com/zsh-users/zsh-autosuggestions
 # (Installed with package extra/zsh-autosuggestions)
@@ -199,3 +203,14 @@ ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[arg0]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[comment]='fg=white'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=underline'
+
+# Prompt
+# Append local prompts themes directory to fpath
+# fpath=(~/.config/zsh/.zprompts $fpath)
+# Load promptinit function and call it (search promptinit in the man)
+autoload -U promptinit
+promptinit
+# Set theme
+# prompt perso1
+eval "$(starship init zsh)"
+
